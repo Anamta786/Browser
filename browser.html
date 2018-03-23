@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Browser</title>
+<link rel="icon" href="img/user1.jpg" size="16*16" type="image/jpg">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="http://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.js"></script>
+<link rel="stylesheet" type="text/css" href="http://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.css" />
+<link rel="stylesheet" type="text/css" href="browser_menuCSS/normalize.css" />
+<link rel="stylesheet" type="text/css" href="browser_menuCSS/menu_cornerbox.css" />
+	
+<style>
+
+body {
+    font-family: Arial
+}
+
+* {
+    box-sizing: border-box;
+	
+}
+
+/* The browser window */
+.container {
+
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+/* Container for columns and the top "toolbar" */
+.row {
+    padding:5px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+/* Create three unequal columns that floats next to each other */
+.column {
+    float: left;
+	
+}
+
+.left {
+    width: 15%;
+}
+
+.right {
+    width: 10%;
+}
+
+.middle {
+    width: 80%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Three dots */
+.dot {
+    margin-top: 4px;
+    height: 12px;
+    width: 12px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+input[type=text1]{
+width:130px;
+box-sizing:border-box;
+border:2px solid #ccc;
+border-radius:4px;
+font-size:16px;
+background-color:white;
+background-image:url('img/icon.jpg');
+background-position:700px; 700px;
+cursor:pointer;
+background-repeat:no-repeat;
+padding:12px 20px 12px 40px;
+}
+
+input[type=text]{
+width:130px;
+box-sizing:border-box;
+border:2px solid #ccc;
+border-radius:4px;
+font-size:16px;
+background-color:white;
+background-image:url('img/pic4.jpeg');
+background-position:10px; 10px;
+background-repeat:no-repeat;
+padding:12px 20px 12px 40px;
+-webkit-tansition:width 0.4s ease-in-out;
+transition:width 0.4 ease-in-out;
+
+}
+input[type=text]:focus{
+width:100%;
+}
+/* Three bars (hamburger menu) */
+.bar {
+    width: 17px;
+    height: 3px;
+    background-color: #aaa;
+    margin: 3px 0;
+    display: block;
+}
+
+/* Page content */
+.content {
+    padding: 10px;
+	height:600px;
+}
+row1{
+height:50px;
+width:400px;
+}
+
+</style>
+<script type="text/javascript">
+$(function () {
+    $('#tabs').w2tabs({
+        name: 'tabs',
+        active: 'first',
+        tabs: [
+            { id: 'first', text: 'First Tab' }
+			 
+        ]
+    });
+});
+
+var ind = 1;
+
+function insertTab() {
+    w2ui.tabs.animateInsert('first', { id: 'tab'+ ind, text: 'Tab '+ ind });
+	
+	var myWindow=window.open(" ","_blank","height=800,width=500" );
+	
+	ind++;
+	 
+}
+
+function removeTabs() {
+    ind = 1;
+    var tb = w2ui.tabs;
+    var tabs = tb.get();
+    tabs.splice(tabs.indexOf('first'), 1);
+    tb.remove.apply(tb, tabs);
+	if(confirm("Close Current Tab?")){
+	close();
+	}
+	
+}
+</script>
+</head>
+<body>
+
+	 
+<div class="container"><!--Outer Container-->
+
+<div class="row">
+    <div><!-- Browser Tabs -->
+	<div id="tabs" style="width: 100%;background-color:white;"></div >
+      <button class="w2ui-btn" onclick="insertTab()" title="New Tab" ><span class="dot" style="background:#5AC05A;"></span></button>
+	  <button class="w2ui-btn" onclick="removeTabs()"  title="Close current tab"><span class="dot" style="background:#ED594A;"></span></button>
+     </div>
+	
+	<br><hr>
+    <div class="column middle">
+    <input type="text" name="search" placeholder="Search...">
+     </div>
+		
+    <!--Browser menu-->
+     <div class="container" >
+			<div class="menu-wrap">
+				<nav class="menu">
+					<div class="profile"><img src="img/user1.jpg" alt="Unavailabe"/><span>Guest User</span></div>
+					<div class="icon-list"><ul >
+						<a href="#"><li ><span>Bookmarks</span></li></a>
+						<a href="#"><li><span>Downloads</span></li></a>
+						<a href="#"><li><span>History</span></li></a>
+						<a href="#"><li><span>Settings</span></li></a></ul>
+					</div>
+				</nav>
+				<button class="close-button" id="close-button">Close Menu</button>
+			</div>
+			<button class="menu-button" id="open-button">Open Menu</button>
+			
+		</div>
+		<script src="browser_menuJS/classie.js"></script>
+		<script src="browser_menuJS/main.js"></script><!--Browser menu-->
+        
+</div>
+
+<!--Browser Content-->
+   <div class="content" style="text-align:center;background-color:#f1f1f1;">
+   <div class="row1" >
+   <b><span style="color:blue;font-size:50px;">Z</span></b>
+   <b><span style="color:red;font-size:50px;">O</span></b>
+<b><span style="color:yellow;font-size:50px;">O</span></b>
+<b><span style="color:blue;font-size:50px;">G</span></b>
+<b><span style="color:green;font-size:50px;">L</span></b>
+<b><span style="color:blue;font-size:50px;">E</span></b>
+   </div>
+  
+   <a href="#">
+  <img src="img/image.png" alt="unavailabe"title="Celebrate" style="width:600px;height:180px;border:0;">
+</a>
+<center>
+<input type="text1" placeholder="Search Google or Type URL"title="Search" style="box-shadow:2px 2px 25px black;margin-top:60px;text-align:center;height:50px;width:55%;">
+</center>
+</div>
+
+</div><!--Outer container close-->
+
+</body>
+</html> 
